@@ -17,6 +17,10 @@ class BMICalc extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         primaryColor: kBackgroundColor,
         scaffoldBackgroundColor: kBackgroundColor,
+        textTheme: Theme.of(context).textTheme.apply(
+              fontFamily: 'Sansation',
+              bodyColor: Colors.white,
+            ),
       ),
       home: InputWindow(),
     );
