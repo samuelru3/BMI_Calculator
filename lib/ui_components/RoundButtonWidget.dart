@@ -14,7 +14,7 @@ class RoundButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: isTapped,
       child: Container(
         child: content,
         padding: EdgeInsets.all(30),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tutorial/constands.dart';
 import 'package:tutorial/ui_components/RoundButtonWidget.dart';
+import 'package:tutorial/ui_windows/input_window.dart';
 
 class ResultWindow extends StatelessWidget {
   @override
@@ -12,6 +13,7 @@ class ResultWindow extends StatelessWidget {
             'Ergebnis',
             style: kAppBarTextStyle,
           ),
+          automaticallyImplyLeading: false,
         ),
         body: SafeArea(
           child: Column(
@@ -58,7 +60,13 @@ class ResultWindow extends StatelessWidget {
                   size: 70,
                   color: Color(0xFF0047FF),
                 ),
-                isTapped: () {},
+                isTapped: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InputWindow()),
+                  );
+                  //Navigator.pop(context);
+                },
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tutorial/ui_components/RoundButtonWidget.dart';
+import 'package:tutorial/ui_windows/result_window.dart';
 
 import '../constands.dart';
 
@@ -188,8 +189,31 @@ class _InputWindowState extends State<InputWindow> {
                 size: 70,
                 color: Color(0xFF55B945),
               ),
-              isTapped: () {},
+              isTapped: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultWindow(),
+                  ),
+                );
+              },
             ),
+            /*RoundButtonWidget(
+              color: Color(0xFF3E3E4C),
+              content: Icon(
+                FontAwesomeIcons.play,
+                size: 70,
+                color: Color(0xFF55B945),
+              ),
+              isTapped: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultWindow(),
+                  ),
+                );
+              },
+            ),*/
           ],
         ),
       ),
