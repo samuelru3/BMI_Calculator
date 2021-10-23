@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tutorial/ui_windows/input_window.dart';
+import 'package:tutorial/ui_windows/result_window.dart';
 
 import 'constands.dart';
 
@@ -22,7 +22,7 @@ class BMICalc extends StatelessWidget {
               bodyColor: Colors.white,
             ),
       ),
-      home: InputWindow(),
+      home: ResultWindow(),
     );
   }
 }
