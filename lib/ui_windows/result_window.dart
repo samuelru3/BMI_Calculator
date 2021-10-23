@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tutorial/constands.dart';
+import 'package:tutorial/ui_components/RoundButtonWidget.dart';
 
 class ResultWindow extends StatelessWidget {
   @override
@@ -13,6 +15,8 @@ class ResultWindow extends StatelessWidget {
         ),
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Stack(
                 alignment: Alignment.center,
@@ -41,10 +45,21 @@ class ResultWindow extends StatelessWidget {
                   )
                 ],
               ),
-              Text(
-                'Normal 18.5 - 25',
-                style: TextStyle(fontSize: 40),
-              )
+              Center(
+                child: Text(
+                  'Normal 18.5 - 25',
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+              RoundButtonWidget(
+                color: kLightGrayWidgetBackgroundColor,
+                content: Icon(
+                  FontAwesomeIcons.reply,
+                  size: 70,
+                  color: Color(0xFF0047FF),
+                ),
+                isTapped: () {},
+              ),
             ],
           ),
         ));
