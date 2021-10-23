@@ -11,6 +11,8 @@ class InputWindow extends StatefulWidget {
 }
 
 class _InputWindowState extends State<InputWindow> {
+  int age = 25;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +71,7 @@ class _InputWindowState extends State<InputWindow> {
                             width: 100,
                           ),
                           Text(
-                            '26',
+                            age.toString(),
                             style: kValueTextStyle,
                           ),
                           SizedBox(
@@ -79,10 +81,14 @@ class _InputWindowState extends State<InputWindow> {
                         ],
                       ),
                       Slider(
-                        value: 50,
+                        value: age.toDouble(),
                         min: 0,
                         max: 200,
-                        onChanged: (x) {},
+                        onChanged: (double newValue) {
+                          setState(() {
+                            age = newValue.round();
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -198,22 +204,6 @@ class _InputWindowState extends State<InputWindow> {
                 );
               },
             ),
-            /*RoundButtonWidget(
-              color: Color(0xFF3E3E4C),
-              content: Icon(
-                FontAwesomeIcons.play,
-                size: 70,
-                color: Color(0xFF55B945),
-              ),
-              isTapped: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ResultWindow(),
-                  ),
-                );
-              },
-            ),*/
           ],
         ),
       ),
