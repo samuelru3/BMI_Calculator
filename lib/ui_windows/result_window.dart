@@ -5,6 +5,16 @@ import 'package:tutorial/ui_components/RoundButtonWidget.dart';
 import 'package:tutorial/ui_windows/input_window.dart';
 
 class ResultWindow extends StatelessWidget {
+  ResultWindow({
+    @required this.bmiColor,
+    @required this.bmiResult,
+    @required this.bmiText,
+  });
+
+  final String bmiResult;
+  final Color bmiColor;
+  final String bmiText;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +37,7 @@ class ResultWindow extends StatelessWidget {
                     width: 300,
                     height: 300,
                     decoration: BoxDecoration(
-                      color: Color(0xFF55B945),
+                      color: bmiColor,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -40,7 +50,7 @@ class ResultWindow extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '20.1',
+                    bmiResult,
                     style: TextStyle(
                       fontSize: 90,
                     ),
@@ -49,7 +59,7 @@ class ResultWindow extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  'Normal 18.5 - 25',
+                  bmiText,
                   style: TextStyle(fontSize: 40),
                 ),
               ),

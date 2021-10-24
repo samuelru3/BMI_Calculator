@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tutorial/bmi_calculator.dart';
 import 'package:tutorial/ui_components/RoundButtonWidget.dart';
 import 'package:tutorial/ui_windows/result_window.dart';
-
 import '../constands.dart';
+import 'result_window.dart';
 
 class InputWindow extends StatefulWidget {
   @override
@@ -11,7 +12,10 @@ class InputWindow extends StatefulWidget {
 }
 
 class _InputWindowState extends State<InputWindow> {
+  String gender = kMale;
   int age = 25;
+  int height = 180;
+  int weight = 65;
 
   @override
   Widget build(BuildContext context) {
@@ -31,22 +35,34 @@ class _InputWindowState extends State<InputWindow> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   RoundButtonWidget(
-                    color: Color(0xFF3E3E4C),
+                    color: gender == kMale
+                        ? kDarkGrayWidgetBackgroundColor
+                        : kLightGrayWidgetBackgroundColor,
                     content: Icon(
                       FontAwesomeIcons.male,
                       size: 70,
                       color: Color(0xFFC2EBFF),
                     ),
-                    isTapped: () {},
+                    isTapped: () {
+                      setState(() {
+                        gender = kMale;
+                      });
+                    },
                   ),
                   RoundButtonWidget(
-                    color: Color(0xFF3E3E4C),
+                    color: gender == kFemale
+                        ? kDarkGrayWidgetBackgroundColor
+                        : kLightGrayWidgetBackgroundColor,
                     content: Icon(
                       FontAwesomeIcons.female,
                       size: 70,
                       color: Color(0xFFFFC0D1),
                     ),
-                    isTapped: () {},
+                    isTapped: () {
+                      setState(() {
+                        gender = kFemale;
+                      });
+                    },
                   ),
                 ],
               ),
@@ -83,7 +99,7 @@ class _InputWindowState extends State<InputWindow> {
                       Slider(
                         value: age.toDouble(),
                         min: 0,
-                        max: 200,
+                        max: 140,
                         onChanged: (double newValue) {
                           setState(() {
                             age = newValue.round();
@@ -119,7 +135,7 @@ class _InputWindowState extends State<InputWindow> {
                             width: 80,
                           ),
                           Text(
-                            '180',
+                            height.toString(),
                             style: kValueTextStyle,
                           ),
                           SizedBox(
@@ -129,10 +145,14 @@ class _InputWindowState extends State<InputWindow> {
                         ],
                       ),
                       Slider(
-                        value: 50,
-                        min: 0,
-                        max: 200,
-                        onChanged: (x) {},
+                        value: height.toDouble(),
+                        min: 30,
+                        max: 220,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -163,7 +183,7 @@ class _InputWindowState extends State<InputWindow> {
                             width: 70,
                           ),
                           Text(
-                            '65',
+                            weight.toString(),
                             style: kValueTextStyle,
                           ),
                           SizedBox(
@@ -173,10 +193,14 @@ class _InputWindowState extends State<InputWindow> {
                         ],
                       ),
                       Slider(
-                        value: 50,
+                        value: weight.toDouble(),
                         min: 0,
                         max: 200,
-                        onChanged: (x) {},
+                        onChanged: (double newValue) {
+                          setState(() {
+                            weight = newValue.round();
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -196,10 +220,19 @@ class _InputWindowState extends State<InputWindow> {
                 color: Color(0xFF55B945),
               ),
               isTapped: () {
+                BMICalculator result = BMICalculator(
+                  gender: gender,
+                  height: height,
+                  weight: weight,
+                );
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultWindow(),
+                    builder: (context) => ResultWindow(
+                      bmiResult: result.bmiCalculation(),
+                      bmiColor: result.getBMIColor(),
+                      bmiText: result.getBMIText(),
+                    ),
                   ),
                 );
               },
