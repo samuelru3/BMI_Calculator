@@ -40,7 +40,7 @@ class _InputWindowState extends State<InputWindow> {
                         : kLightGrayWidgetBackgroundColor,
                     content: Icon(
                       FontAwesomeIcons.male,
-                      size: 70,
+                      size: 40,
                       color: Color(0xFFC2EBFF),
                     ),
                     isTapped: () {
@@ -55,7 +55,7 @@ class _InputWindowState extends State<InputWindow> {
                         : kLightGrayWidgetBackgroundColor,
                     content: Icon(
                       FontAwesomeIcons.female,
-                      size: 70,
+                      size: 40,
                       color: Color(0xFFFFC0D1),
                     ),
                     isTapped: () {
@@ -115,6 +115,7 @@ class _InputWindowState extends State<InputWindow> {
                 ),
               ),
             ),
+
             //Größe Eingabe Modul
             Expanded(
               child: Padding(
@@ -212,30 +213,37 @@ class _InputWindowState extends State<InputWindow> {
               ),
             ),
             //Play Button
-            RoundButtonWidget(
-              color: Color(0xFF3E3E4C),
-              content: Icon(
-                FontAwesomeIcons.play,
-                size: 70,
-                color: Color(0xFF55B945),
-              ),
-              isTapped: () {
-                BMICalculator result = BMICalculator(
-                  gender: gender,
-                  height: height,
-                  weight: weight,
-                );
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ResultWindow(
-                      bmiResult: result.bmiCalculation(),
-                      bmiColor: result.getBMIColor(),
-                      bmiText: result.getBMIText(),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  RoundButtonWidget(
+                    color: Color(0xFF3E3E4C),
+                    content: Icon(
+                      FontAwesomeIcons.play,
+                      size: 40,
+                      color: Color(0xFF55B945),
                     ),
+                    isTapped: () {
+                      BMICalculator result = BMICalculator(
+                        gender: gender,
+                        height: height,
+                        weight: weight,
+                      );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultWindow(
+                            bmiResult: result.bmiCalculation(),
+                            bmiColor: result.getBMIColor(),
+                            bmiText: result.getBMIText(),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ],
+              ),
             ),
           ],
         ),

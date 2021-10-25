@@ -52,7 +52,7 @@ class ResultWindow extends StatelessWidget {
                   Text(
                     bmiResult,
                     style: TextStyle(
-                      fontSize: 90,
+                      fontSize: 70,
                     ),
                   )
                 ],
@@ -67,7 +67,7 @@ class ResultWindow extends StatelessWidget {
                 color: kLightGrayWidgetBackgroundColor,
                 content: Icon(
                   FontAwesomeIcons.reply,
-                  size: 70,
+                  size: 60,
                   color: Color(0xFF0047FF),
                 ),
                 isTapped: () {

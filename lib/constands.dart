@@ -15,7 +15,7 @@ const kUnitTextStyle = TextStyle(
   fontSize: 20,
 );
 const kValueTextStyle = TextStyle(
-  fontSize: 60,
+  fontSize: 45,
 );
 
 const kAppBarTextStyle = TextStyle(
