@@ -3,12 +3,6 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 
 import 'constands.dart';
-import 'constands.dart';
-import 'constands.dart';
-import 'constands.dart';
-import 'constands.dart';
-import 'constands.dart';
-import 'constands.dart';
 
 class BMICalculator {
   BMICalculator({
@@ -25,7 +19,7 @@ class BMICalculator {
   double _bmi;
 
   String bmiCalculation() {
-    _bmi = weight / pow(height, 2);
+    _bmi = weight / pow(height / 100, 2);
     return _bmi.toStringAsFixed(1);
   }
 

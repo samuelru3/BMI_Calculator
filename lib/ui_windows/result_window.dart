@@ -71,11 +71,7 @@ class ResultWindow extends StatelessWidget {
                   color: Color(0xFF0047FF),
                 ),
                 isTapped: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => InputWindow()),
-                  );
-                  //Navigator.pop(context);
+                  Navigator.pop(context);
                 },
               ),
             ],
